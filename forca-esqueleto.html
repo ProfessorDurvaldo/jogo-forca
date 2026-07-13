@@ -137,9 +137,7 @@
 </head>
 
 <body>
-
   <h1>JOGO DA FORCA</h1>
-
   <p>Erros: <span id="contador">0</span> de 6</p>
 
   <!-- Boneco: cada div é uma parte do corpo -->
@@ -173,7 +171,35 @@
     // Vamos construir o jogo passo a passo.
     // ==========================================================
 
-    console.log("Tudo certo, o JavaScript está rodando!");
+    // var palavra = 'PROGRAMACAO'
+    // var palavra2 = 'BANANA'
+    // var palavra3 = 'ABACATE'
+    // var palavra4 = 'MORANGO'
+    var palavras = ["Programacao", 'Banana', 'Abacate', 'Morango', 'Macieira', 'Abacateiro']
+    //                    0           1          2          3           4
+    
+    // .length mostra a quantidade de itens no array
+    // console.log(palavras.length)
+
+    // Escreve Todas as palavras no console
+    // for (let index = 0; index < palavras.length; index++) {
+    //     console.log(palavras[index])
+    // }
+
+    // Gerar um numero aleatorio entre 0 e a quantidade de itens no array
+    // Math.random() gera um numero entre 0 e 0.9999999
+    // Math.floor() Arredonda o numero para baixo
+    // Pega uma palavra aleatoria do array
+    var numeroAleatorio = Math.floor(Math.random() * palavras.length)
+    var palavraAleatoria = palavras[numeroAleatorio]
+
+    // .length quando aplicado em uma palavra, ele retorna 
+    // a quantidade de letras dela
+    console.log("A palavra é: " + palavraAleatoria)
+    console.log("A quantidade de letras dela é: " + palavraAleatoria.length)
+    
+    // Fazer um for que escreve _ (o traço) no console para cada letra da palavra
+
 
   </script>
 
