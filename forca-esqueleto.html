@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogo da Forca</title>
+
+  <style>
+    /* ==========================================================
+       CSS PRONTO - não precisa mexer aqui hoje.
+       (Mas leia! Depois a gente comenta cada parte.)
+       ========================================================== */
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #1e293b;
+      color: #f1f5f9;
+      text-align: center;
+      padding: 30px;
+    }
+
+    h1 { letter-spacing: 4px; }
+
+    /* A palavra secreta com os tracinhos */
+    #palavra {
+      font-size: 42px;
+      letter-spacing: 12px;
+      margin: 30px 0;
+      font-family: monospace;
+      min-height: 50px;
+    }
+
+    /* Letras que o jogador errou */
+    #erradas {
+      font-size: 24px;
+      color: #f87171;
+      letter-spacing: 6px;
+      min-height: 30px;
+    }
+
+    /* Área onde os botões das letras vão aparecer */
+    #teclado {
+      max-width: 600px;
+      margin: 20px auto;
+    }
+
+    /* Cada botão de letra */
+    .letra {
+      width: 45px;
+      height: 45px;
+      margin: 4px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+      border-radius: 6px;
+      background-color: #38bdf8;
+      color: #0f172a;
+    }
+
+    .letra:hover {
+      background-color: #7dd3fc;
+    }
+
+    /* Botão já usado */
+    .letra:disabled {
+      background-color: #475569;
+      color: #94a3b8;
+      cursor: not-allowed;
+    }
+
+    #mensagem {
+      font-size: 24px;
+      font-weight: bold;
+      min-height: 30px;
+      margin: 20px 0;
+    }
+
+    #reiniciar {
+      padding: 12px 30px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 6px;
+      background-color: #22c55e;
+      color: white;
+    }
+
+    /* ---- Boneco da forca (só aparece no PASSO 8) ---- */
+    #boneco {
+      width: 200px;
+      height: 250px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    #boneco div {
+      position: absolute;
+      background-color: #f1f5f9;
+      display: none;          /* começa TUDO escondido */
+    }
+
+    .cabeca {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      top: 0; left: 80px;
+    }
+    .corpo {
+      width: 4px; height: 70px;
+      top: 40px; left: 98px;
+    }
+    .braco-esq {
+      width: 4px; height: 50px;
+      top: 50px; left: 98px;
+      transform: rotate(45deg);
+      transform-origin: top;
+    }
+    .braco-dir {
+      width: 4px; height: 50px;
+      top: 50px; left: 98px;
+      transform: rotate(-45deg);
+      transform-origin: top;
+    }
+    .perna-esq {
+      width: 4px; height: 60px;
+      top: 110px; left: 98px;
+      transform: rotate(30deg);
+      transform-origin: top;
+    }
+    .perna-dir {
+      width: 4px; height: 60px;
+      top: 110px; left: 98px;
+      transform: rotate(-30deg);
+      transform-origin: top;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>JOGO DA FORCA</h1>
+
+  <p>Erros: <span id="contador">0</span> de 6</p>
+
+  <!-- Boneco: cada div é uma parte do corpo -->
+  <div id="boneco">
+    <div class="cabeca"></div>
+    <div class="corpo"></div>
+    <div class="braco-esq"></div>
+    <div class="braco-dir"></div>
+    <div class="perna-esq"></div>
+    <div class="perna-dir"></div>
+  </div>
+
+  <!-- Aqui vai aparecer: _ _ _ _ _ -->
+  <div id="palavra"></div>
+
+  <!-- Aqui vão aparecer as letras erradas -->
+  <div id="erradas"></div>
+
+  <!-- Aqui os botões A-Z vão ser criados pelo JavaScript -->
+  <div id="teclado"></div>
+
+  <!-- Aqui aparece "VOCÊ VENCEU" ou "VOCÊ PERDEU" -->
+  <div id="mensagem"></div>
+
+  <button id="reiniciar">Novo jogo</button>
+
+
+  <script>
+    // ==========================================================
+    // AQUI É O NOSSO ESPAÇO DE TRABALHO!
+    // Vamos construir o jogo passo a passo.
+    // ==========================================================
+
+    console.log("Tudo certo, o JavaScript está rodando!");
+
+  </script>
+
+</body>
+</html>
