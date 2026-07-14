@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +20,9 @@
       padding: 30px;
     }
 
-    h1 { letter-spacing: 4px; }
+    h1 {
+      letter-spacing: 4px;
+    }
 
     /* A palavra secreta com os tracinhos */
     #palavra {
@@ -97,39 +100,57 @@
     #boneco div {
       position: absolute;
       background-color: #f1f5f9;
-      display: none;          /* começa TUDO escondido */
+      display: none;
+      /* começa TUDO escondido */
     }
 
     .cabeca {
-      width: 40px; height: 40px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
-      top: 0; left: 80px;
+      top: 0;
+      left: 80px;
     }
+
     .corpo {
-      width: 4px; height: 70px;
-      top: 40px; left: 98px;
+      width: 4px;
+      height: 70px;
+      top: 40px;
+      left: 98px;
     }
+
     .braco-esq {
-      width: 4px; height: 50px;
-      top: 50px; left: 98px;
+      width: 4px;
+      height: 50px;
+      top: 50px;
+      left: 98px;
       transform: rotate(45deg);
       transform-origin: top;
     }
+
     .braco-dir {
-      width: 4px; height: 50px;
-      top: 50px; left: 98px;
+      width: 4px;
+      height: 50px;
+      top: 50px;
+      left: 98px;
       transform: rotate(-45deg);
       transform-origin: top;
     }
+
     .perna-esq {
-      width: 4px; height: 60px;
-      top: 110px; left: 98px;
+      width: 4px;
+      height: 60px;
+      top: 110px;
+      left: 98px;
       transform: rotate(30deg);
       transform-origin: top;
     }
+
     .perna-dir {
-      width: 4px; height: 60px;
-      top: 110px; left: 98px;
+      width: 4px;
+      height: 60px;
+      top: 110px;
+      left: 98px;
       transform: rotate(-30deg);
       transform-origin: top;
     }
@@ -175,9 +196,9 @@
     // var palavra2 = 'BANANA'
     // var palavra3 = 'ABACATE'
     // var palavra4 = 'MORANGO'
-    var palavras = ["Programacao", 'Banana', 'Abacate', 'Morango', 'Macieira', 'Abacateiro']
-    //                    0           1          2          3           4
-    
+    var palavras = ["PROGRAMACAO", 'BANANA', 'ABACATE', 'MORANGO', 'MACIEIRA', 'ABACATEIRO']
+    //                    0           1          2          3           4            5
+
     // .length mostra a quantidade de itens no array
     // console.log(palavras.length)
 
@@ -193,15 +214,78 @@
     var numeroAleatorio = Math.floor(Math.random() * palavras.length)
     var palavraAleatoria = palavras[numeroAleatorio]
 
-    // .length quando aplicado em uma palavra, ele retorna 
+    // .length quando aplicado em uma string, ele retorna 
     // a quantidade de letras dela
     console.log("A palavra é: " + palavraAleatoria)
     console.log("A quantidade de letras dela é: " + palavraAleatoria.length)
-    
-    // Fazer um for que escreve _ (o traço) no console para cada letra da palavra
 
+    var letrasCertas = []
+    var letrasErradas = []
+    var erros = 0
+
+    function mostrarPalavra() {
+      var tracos = "";
+      for (let index = 0; index < palavraAleatoria.length; index++) {
+        var letraSecreta = palavraAleatoria[index]
+
+        if (letrasCertas.includes(letraSecreta)) {
+          tracos = tracos + letraSecreta
+        } else {
+          tracos = tracos + "_"
+        }
+      }
+      document.getElementById("palavra").textContent = tracos
+    }
+
+    mostrarPalavra()
+
+    function criarTeclado() {
+      const alfabeto = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+      const teclado = document.getElementById("teclado")
+
+      for (let index = 0; index < alfabeto.length; index++) {
+        const letra = alfabeto[index];
+        // Cria uma tag html
+        const botao = document.createElement("button")
+        botao.textContent = letra
+        botao.className = "letra"
+
+        // Adiciona evento de clicar no botao
+        botao.onclick = function () {
+          chutar(letra, botao)
+        }
+
+        // Adiciona uma tag html em um elemento
+        teclado.appendChild(botao)
+      }
+    }
+    criarTeclado()
+
+    function chutar(letra, botao) {
+      console.log("A letra que vc chutou foi: " + letra)
+      botao.disabled = true
+
+      if (palavraAleatoria.includes(letra)) {
+        console.log("Acertou!")
+        letrasCertas.push(letra)
+        mostrarPalavra()
+      } else {
+        console.log("Errou")
+        letrasErradas.push(letra)
+        mostrarErradas()
+      }
+
+      console.log("As letras certas são: ", letrasCertas)
+      console.log("As letras erradas são: ", letrasErradas)
+    }
+
+    function mostrarErradas() {
+      var divErradas = document.getElementById("erradas")
+      divErradas.textContent = letrasErradas.join(" ")
+    }
 
   </script>
 
 </body>
+
 </html>
